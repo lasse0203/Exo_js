@@ -5,25 +5,39 @@ const todos = [];
 const form = document.querySelector("#todo-form");
 const todoList = document.querySelector("#todo-list");
 
+
+
+
 form.addEventListener("submit", (event) => {
     event.preventDefault();
 
     const descriptionInput = document.querySelector('#description');
     const deadlineInput = document.querySelector('#deadline');
-
+    
     const description = descriptionInput.value;
-    const deadline = deadlineInput.value;
+    const deadline = new Date(deadlineInput.value);
+    const today = new Date(
+        new Date().getFullYear(),
+        new Date().getMonth(),
+        new Date().getDate()
+    );
+
+    if (deadline > today) {
         const newTodo = new Todo(description, deadline);
         todos.push(newTodo);
+        
         descriptionInput.value = '';
         deadlineInput.value = '';
 
         displayTodos();
-    
+    } else {
+        alert("La date doit être future.");
+    }
 });
 
 function displayTodos() {
     todos.sort((a, b) => new Date(a.deadline) - new Date(b.deadline));
+    
     todoList.innerHTML = '';
 
         todos.forEach((todo, index) => {
@@ -39,7 +53,7 @@ function displayTodos() {
                 if (confirm("Êtes-vous sûr ?")) {
                     todos.splice(indexToRemove, 1);
                     displayTodos();
-                }
+               }
             });
     
             listItem.appendChild(descriptionSpan);
