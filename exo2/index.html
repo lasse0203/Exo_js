@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire</title>
+    <script defer src="./main.js" type="module"></script>
+</head>
+<body>
+    <main>
+        <h1>Exercice</h1>
+        <hr>
+        <form action="#" id="user-form">
+            <div>
+                <label for="firstname">Firstname: </label>
+                <input type="text" id="firstname" name="firstname" required>
+            </div>
+            <div>
+                <label for="lastname">Lastname: </label>
+                <input type="text" id="lastname" name="lastname" required>
+            </div>
+            <div>
+                <label for="email">Email: </label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div>
+                <label for="password">Password: </label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div>
+                <button>Submit</button>
+            </div>
+        </form>
+        <p>Nombre d'utilisateurs: <span id="userCount">0</span></p>
+        
+    </main>
+</body>
+</html>
